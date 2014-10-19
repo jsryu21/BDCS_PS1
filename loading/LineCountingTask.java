@@ -124,8 +124,6 @@ public class LineCountingTask implements Task {
     int dim = 0;
     double[] params;
     
-    System.out.println(0.7 / 0.3);
-    
     // first scan for initialize
     for (final Pair<LongWritable, Text> keyValue : dataSet) {
         // LOG.log(Level.FINEST, "Read line: {0}", keyValue);
@@ -198,13 +196,13 @@ public class LineCountingTask implements Task {
     for (int idx2= 0; idx2<100; idx2++){
     	tempR = jFunc(normData, params);
     	newParam = uFunc(params, tempR, 1);
-        for (int i =0; i < dim-1; i++){
-        	System.out.print(newParam[i] + "  ");
+ //       for (int i =0; i < dim-1; i++){
+ //       	System.out.print(newParam[i] + "  ");
         	
-        }
+//        }
         System.out.println();
         if (converge(params,newParam) == 1){
-        	System.out.println("#Iterate: " + (idx2+1));
+//        	System.out.println("#Iterate: " + (idx2+1));
         	break;        	
         }
         else{
