@@ -68,11 +68,6 @@ public class LineCountingTask implements Task {
 		  res[j] = tempRes;
 	  }
 	  
-	  /* 
-	  for (int i = 0; i<dim; i++){
-		  System.out.print(res[i] + " ");
-	  }
-	  */
 	  return res;
   }
   
@@ -107,7 +102,6 @@ public class LineCountingTask implements Task {
 	  for (int i =0; i<dim; i++){
 		  newParam[i] = bParam[i] - alpha*costRes[i]/m;
 	  }
-	  
 	  return newParam;
   }
     
@@ -130,6 +124,7 @@ public class LineCountingTask implements Task {
     int dim = 0;
     double[] params;
     
+    System.out.println(0.7 / 0.3);
     
     // first scan for initialize
     for (final Pair<LongWritable, Text> keyValue : dataSet) {
@@ -167,7 +162,7 @@ public class LineCountingTask implements Task {
     	}	
     	idx++;
     }
-    // in case of data normalization 0~1
+    // in case of data normalization -1~1
     idx = 0;
     double[][] normData;
     double [] avg = new double[dim];
@@ -183,33 +178,17 @@ public class LineCountingTask implements Task {
     	}
     }
     LOG.log(Level.FINER, "Data Loading & Normalization Done");
-    /*
-    idx = 0;
-    double[][] normData;
-    normData = new double[numEx][dim];
-    for (;idx<numEx;idx++) {
-    	for (int j=0; j<5; j++){
-    		normData[idx][j] = Float.parseFloat(totalData[idx][j]);
-    	}
-    }
-    */
+    
     
     for (int j=0; j<dim;j++){
     	System.out.print("max, min, avg" + max[j]+ " " + min[j] + " " + avg[j]);
     	System.out.println("");
     }
     
-    // float[] tempRes = hFunc(totalData, params);
        
     double[] tempR = new double[dim-1];
     double[] newParam = new double[dim-1];
-    //double[] tempParams = new double[dim-1];
-    
-    
-    
-    
-    
-    
+        
     System.out.print("Initial params: ");
     for (int i =0; i < dim-1; i++){
     	System.out.print(params[i] + "  ");
@@ -233,10 +212,6 @@ public class LineCountingTask implements Task {
         }
     }
     
-    /*
-    tempR = jFunc(totalData, params);
-    newParam = uFunc(params, tempR, (double) 0.1);
-    */
  // for check
     double[] re = new double[numEx];
     re = hFunc(normData, newParam);
