@@ -63,7 +63,7 @@ public class DataLoadingREEF {
       short_name = "timeout", default_value = "2")
   public static final class TimeOut implements Name<Integer> {
   }
-
+// input file path
   @NamedParameter(short_name = "input", default_value = "file:/Users/c5117410/Downloads/SNUBD/sample.txt")
   public static final class InputDir implements Name<String> {
   }
